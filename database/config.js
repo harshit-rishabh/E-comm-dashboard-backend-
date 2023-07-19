@@ -1,2 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://0.0.0.0:27017/e-comm');
+const url = 'mongodb+srv://harshitshukla4385:ecomm@cluster0.rtwqqag.mongodb.net/E-comm?retryWrites=true&w=majority';
+const connectionparams = {
+    useNewURLParser:true,
+    useUnifiedTopology:true
+}
+mongoose.connect(url, connectionparams).then(()=>console.log('connected')).catch((err)=>console.log(err));
