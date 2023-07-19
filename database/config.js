@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const url = 'mongodb+srv://harshitshukla4385:ecomm@cluster0.rtwqqag.mongodb.net/E-comm?retryWrites=true&w=majority';
+const dotenv = require('dotenv');
+dotenv.config();
+const url = `${process.env.REACT_APP_ATLAS_URL}`;
 const connectionparams = {
     useNewURLParser:true,
     useUnifiedTopology:true
