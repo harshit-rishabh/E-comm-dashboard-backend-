@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 const dotenv = require('dotenv');
 dotenv.config();
-const PORT = process.env.REACT_APP_PORT;
+const PORT = process.env.REACT_APP_PORT || 4500;
 app.post('/signup', async (req, resp) => {
     let usersignup = new signup(req.body);
     let result = await usersignup.save();
