@@ -10,7 +10,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const PORT = process.env.REACT_APP_PORT || 4500;
 const Jwt = require('jsonwebtoken');
-const jwtkey = process.env.JWT;
+const jwtkey = process.env.REACT_APP_JWT;
 
 app.post('/signup', tokenverify, async (req, resp) => {
     let usersignup = new signup(req.body);
@@ -19,7 +19,7 @@ app.post('/signup', tokenverify, async (req, resp) => {
     delete result.pass;
     Jwt.sign({result}, jwtkey, {expiresIn:'30min'}, (err, token)=>{
         if(err){
-            resp.send({result: 'connextion is not valid...'})
+            resp.send({result: 'connection is not valid...'})
         }
         resp.send({result, key: token});
     })
@@ -30,7 +30,7 @@ app.post('/login', tokenverify, async (req, resp) => {
         if (user) {
             Jwt.sign({user}, jwtkey, {expiresIn:'30min'}, (err, token)=>{
                 if(err){
-                    resp.send({result: 'connextion is not valid...'})
+                    resp.send({result: 'connection is not valid...'})
                 }
                 resp.send({user, key: token});
             })
