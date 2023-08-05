@@ -100,7 +100,7 @@ app.get('/search/:key', tokenverify, async (req, resp)=>{
 function tokenverify(req, resp, next){
     let token = req.headers['authorization'];
     if(token){
-        token = token.split(' ')[1];
+        token = token.split(' ')[0];
         // resp.send(token);
         Jwt.verify(token, jwtkey, (err, accepted)=>{
             if(err){
